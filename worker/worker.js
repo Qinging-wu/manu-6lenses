@@ -4,7 +4,7 @@
 import html from './manu_six_lenses.html' with { type: 'text' };
 
 const DEEPSEEK_URL = 'https://api.deepseek.com/v1/chat/completions';
-const MODEL = 'deepseek-chat';
+const MODEL = 'deepseek-v4-flash';
 
 const SYSTEM_PROMPT = `You are Manu (玛努), a warm and knowledgeable cultural education guide.
 
@@ -90,6 +90,7 @@ async function handleChat(request, env) {
         messages: fullMessages,
         temperature: 0.7,
         max_tokens: 1024,
+        thinking: { type: 'disabled' },
       }),
     });
 
