@@ -124,6 +124,12 @@ After the first deploy, attach your custom domain in the Cloudflare dashboard (W
 - All answers are framed as **cultural education**, never medical advice; the system prompt explicitly redirects health questions.
 - The Worker rejects any `Origin` other than the one in `ALLOWED_ORIGIN`. Update that constant to your own domain.
 
+## Related Repository
+
+The ManuBTI quiz in this site is also available as a **standalone, zero-dependency embeddable component** in a separate repo — useful if you want to drop just the quiz into your own web project:
+
+➡️ **[Qinging-wu/ManuBTI](https://github.com/Qinging-wu/ManuBTI)** — the 12-question cultural-lens quiz packaged as reusable static files (`index.html` + `data.js` + `quiz.js` + `styles.css`), with agent-skill integration for OpenCode / Claude Code / Cursor / Codex.
+
 ## License
 
 MIT — see [Qinging-wu/manu-6lenses](https://github.com/Qinging-wu/manu-6lenses).

@@ -124,6 +124,12 @@ npx wrangler deploy
 - 所有回答都框定为 **文化科普**，绝不构成医疗建议；系统提示词会主动把健康问题引导回文化视角。
 - Worker 仅允许 `ALLOWED_ORIGIN` 指定的来源，其他来源一律返回 403。请把该常量改成你自己的域名。
 
+## 关联仓库
+
+本站的 ManuBTI 小测验也以**独立、零依赖的可嵌入组件**形式发布在另一个仓库——如果你只想把测验部分嵌入到自己的网页项目中，可以用它：
+
+➡️ **[Qinging-wu/ManuBTI](https://github.com/Qinging-wu/ManuBTI)** — 12 题文化视角测验，打包为可复用的静态文件（`index.html` + `data.js` + `quiz.js` + `styles.css`），并支持 OpenCode / Claude Code / Cursor / Codex 等 agent 工具集成。
+
 ## License
 
 MIT —— 仓库地址 [Qinging-wu/manu-6lenses](https://github.com/Qinging-wu/manu-6lenses)。
