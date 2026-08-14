@@ -1,4 +1,4 @@
-# Manu · 玛努 — Six Lenses
+# Manu — Six Lenses
 
 **English** · [中文 README](./README_CN.md)
 
