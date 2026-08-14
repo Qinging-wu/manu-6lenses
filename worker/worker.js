@@ -1,10 +1,11 @@
 // Manu AI — Cloudflare Worker
-// Serves the Six Lenses page and proxies chat requests to DeepSeek
+// Serves the Six Lenses page and proxies chat requests to Google Gemini (free tier)
 
 import html from './manu_six_lenses.html' with { type: 'text' };
 
-const DEEPSEEK_URL = 'https://api.deepseek.com/v1/chat/completions';
-const MODEL = 'deepseek-v4-flash';
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models';
+const MODEL = 'gemini-3.6-flash';
+const ALLOWED_ORIGIN = 'https://manu6lenses.win';
 
 const SYSTEM_PROMPT = `You are Manu (玛努), a warm and knowledgeable cultural education guide.
 
@@ -22,6 +23,15 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname;
+
+    // Only allow requests that originate from our own domain
+    const origin = request.headers.get('Origin');
+    if (origin && origin !== ALLOWED_ORIGIN) {
+      return new Response(JSON.stringify({ error: 'Forbidden' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     // --- Serve the HTML page ---
     if (request.method === 'GET' && (path === '/' || path === '/manu_six_lenses.html')) {
@@ -48,7 +58,7 @@ export default {
 };
 
 async function handleChat(request, env) {
-  const apiKey = env.DEEPSEEK_API_KEY;
+  const apiKey = env.GEMINI_API_KEY;
   if (!apiKey) {
     return jsonResponse(502, { error: 'API key not configured on the server.' });
   }
@@ -72,39 +82,42 @@ async function handleChat(request, env) {
     }
   }
 
-  // Prepend system prompt + inject the messages
-  const fullMessages = [
-    { role: 'system', content: SYSTEM_PROMPT },
-    ...messages,
-  ];
+  // Convert client roles ('assistant') to Gemini roles ('model')
+  const contents = messages.map((m) => ({
+    role: m.role === 'assistant' ? 'model' : 'user',
+    parts: [{ text: m.content }],
+  }));
 
   try {
-    const response = await fetch(DEEPSEEK_URL, {
+    const response = await fetch(`${GEMINI_URL}/${MODEL}:generateContent?key=${apiKey}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: MODEL,
-        messages: fullMessages,
-        temperature: 0.7,
-        max_tokens: 1024,
-        thinking: { type: 'disabled' },
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents,
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 1024,
+        },
       }),
     });
 
     if (!response.ok) {
       const errText = await response.text();
-      console.error('DeepSeek API error:', response.status, errText);
+      console.error('Gemini API error:', response.status, errText);
+      if (response.status === 429) {
+        return jsonResponse(429, {
+          error: "Oops, our little free daily budget is all used up for today~ Take a break and come chat with Manu again tomorrow! 🌙",
+        });
+      }
       return jsonResponse(502, { error: 'AI service returned an error. Please try again later.' });
     }
 
     const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content;
+    const reply = data.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('');
 
     if (!reply) {
-      console.error('Unexpected DeepSeek response:', JSON.stringify(data).slice(0, 500));
+      console.error('Unexpected Gemini response:', JSON.stringify(data).slice(0, 500));
       return jsonResponse(502, { error: 'Received an empty response from AI. Please try again.' });
     }
 
@@ -120,7 +133,7 @@ function jsonResponse(status, body) {
     status,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
     },
   });
 }

@@ -205,13 +205,13 @@
     letter-spacing: -0.3px;
   }
   .flip-card-front .card-subtitle {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-secondary);
     letter-spacing: 1px;
   }
   .flip-card-front .flip-hint {
     margin-top: 16px;
-    font-size: 11px;
+    font-size: 12px;
     color: #bbb;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -219,7 +219,7 @@
 
   /* Back */
   .flip-card-back {
-    background: #1a1a2e;
+    background: linear-gradient(160deg, #1a1a2e 0%, #2d2d44 50%, #1e2840 100%);
     color: #e8e4dd;
     transform: rotateY(180deg);
     text-align: left;
@@ -228,21 +228,21 @@
     overflow-y: auto;
   }
   .flip-card-back .back-label {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 4px;
-    opacity: 0.7;
+    opacity: 0.75;
     font-weight: 600;
   }
   .flip-card-back .back-title {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 700;
     margin-bottom: 16px;
     line-height: 1.3;
   }
   .flip-card-back .back-body {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
     opacity: 0.9;
   }
@@ -253,37 +253,37 @@
 
   /* Color accents per card */
   .flip-card.tibetan .flip-card-front { border-top: 4px solid var(--tibetan); }
-  .flip-card.tibetan .flip-card-back { border-top: 4px solid var(--tibetan); }
+  .flip-card.tibetan .flip-card-back { border-top: 4px solid var(--tibetan); background: linear-gradient(160deg, #1e1318 0%, #2d1a20 45%, #1a121a 100%); }
   .flip-card.tibetan .flip-card-front .card-title { color: var(--tibetan); }
   .flip-card.tibetan .flip-card-back .back-label { color: #e8a0a0; }
   .flip-card.tibetan .flip-card-back .back-title { color: #e8c0c0; }
 
   .flip-card.mongolian .flip-card-front { border-top: 4px solid var(--mongolian); }
-  .flip-card.mongolian .flip-card-back { border-top: 4px solid var(--mongolian); }
+  .flip-card.mongolian .flip-card-back { border-top: 4px solid var(--mongolian); background: linear-gradient(160deg, #131a2a 0%, #1a2840 45%, #121a28 100%); }
   .flip-card.mongolian .flip-card-front .card-title { color: var(--mongolian); }
   .flip-card.mongolian .flip-card-back .back-label { color: #8ab4e0; }
   .flip-card.mongolian .flip-card-back .back-title { color: #a8c8e8; }
 
   .flip-card.uyghur .flip-card-front { border-top: 4px solid var(--uyghur); }
-  .flip-card.uyghur .flip-card-back { border-top: 4px solid var(--uyghur); }
+  .flip-card.uyghur .flip-card-back { border-top: 4px solid var(--uyghur); background: linear-gradient(160deg, #131e1a 0%, #1a3028 45%, #121e1a 100%); }
   .flip-card.uyghur .flip-card-front .card-title { color: var(--uyghur); }
   .flip-card.uyghur .flip-card-back .back-label { color: #6dcfbf; }
   .flip-card.uyghur .flip-card-back .back-title { color: #8ee0d4; }
 
   .flip-card.dai .flip-card-front { border-top: 4px solid var(--dai); }
-  .flip-card.dai .flip-card-back { border-top: 4px solid var(--dai); }
+  .flip-card.dai .flip-card-back { border-top: 4px solid var(--dai); background: linear-gradient(160deg, #1e1a13 0%, #30281a 45%, #1e1a12 100%); }
   .flip-card.dai .flip-card-front .card-title { color: var(--dai); }
   .flip-card.dai .flip-card-back .back-label { color: #e8c84a; }
   .flip-card.dai .flip-card-back .back-title { color: #f0d868; }
 
   .flip-card.miao .flip-card-front { border-top: 4px solid var(--miao); }
-  .flip-card.miao .flip-card-back { border-top: 4px solid var(--miao); }
+  .flip-card.miao .flip-card-back { border-top: 4px solid var(--miao); background: linear-gradient(160deg, #1d1328 0%, #2a1a38 45%, #1a1228 100%); }
   .flip-card.miao .flip-card-front .card-title { color: var(--miao); }
   .flip-card.miao .flip-card-back .back-label { color: #c09cd4; }
   .flip-card.miao .flip-card-back .back-title { color: #d4b8e4; }
 
   .flip-card.zhuang .flip-card-front { border-top: 4px solid var(--zhuang); }
-  .flip-card.zhuang .flip-card-back { border-top: 4px solid var(--zhuang); }
+  .flip-card.zhuang .flip-card-back { border-top: 4px solid var(--zhuang); background: linear-gradient(160deg, #201813 0%, #302218 45%, #1e1612 100%); }
   .flip-card.zhuang .flip-card-front .card-title { color: var(--zhuang); }
   .flip-card.zhuang .flip-card-back .back-label { color: #e8b898; }
   .flip-card.zhuang .flip-card-back .back-title { color: #f0c8a8; }
@@ -390,9 +390,9 @@
     background: var(--card-bg);
     border-radius: 20px;
     width: 100%;
-    max-width: 560px;
-    height: 600px;
-    max-height: 85vh;
+    max-width: 720px;
+    height: 720px;
+    max-height: 88vh;
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-lg);
@@ -433,7 +433,7 @@
     50% { opacity: 0.35; }
   }
   .chat-header .chat-subtitle {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-secondary);
     letter-spacing: 1px;
   }
@@ -472,7 +472,7 @@
     display: block;
     text-align: center;
     color: #bbb;
-    font-size: 13px;
+    font-size: 14px;
     padding: 40px 20px;
     line-height: 1.7;
     margin: auto;
@@ -483,8 +483,8 @@
     max-width: 85%;
     padding: 12px 18px;
     border-radius: 18px;
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 15px;
+    line-height: 1.7;
     animation: msgIn 0.3s ease;
     word-break: break-word;
   }
@@ -507,7 +507,7 @@
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .chat-msg.ai .msg-label {
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--accent);
@@ -592,6 +592,7 @@
   }
 
   /* Mobile */
+  /* Mobile */
   @media (max-width: 500px) {
     .chat-overlay { padding: 0; align-items: flex-end; }
     .chat-panel {
@@ -601,14 +602,306 @@
       max-height: 90vh;
     }
   }
+
+  /* ===== ManuBTI Quiz ===== */
+  .btti-entry {
+    background: linear-gradient(135deg, #fef9f0 0%, #faf5eb 100%);
+    border: 1.5px solid rgba(199,125,75,0.3);
+    border-radius: 18px;
+    padding: 20px 28px;
+    margin: 12px auto 36px;
+    max-width: 400px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .btti-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(199,125,75,0.12);
+    border-color: var(--accent);
+  }
+  .btti-entry .btti-icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .btti-entry .btti-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .btti-entry .btti-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Today's Personality Card */
+  .today-card {
+    background: linear-gradient(135deg, #fef9f0 0%, #faf5eb 100%);
+    border: 1px solid rgba(199,125,75,0.25);
+    border-radius: 16px;
+    padding: 16px 22px;
+    margin: 0 auto 20px;
+    max-width: 500px;
+    display: none;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    animation: fadeInUp 0.6s ease;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .today-card.visible { display: flex; }
+  .today-card:hover { box-shadow: 0 4px 24px rgba(199,125,75,0.12); }
+  .today-card .today-emoji { font-size: 36px; flex-shrink: 0; }
+  .today-card .today-info { flex: 1; min-width: 0; }
+  .today-card .today-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 2px;
+  }
+  .today-card .today-name {
+    font-size: 18px; font-weight: 700; color: var(--text);
+    margin-bottom: 2px;
+  }
+  .today-card .today-subs {
+    font-size: 12px; color: var(--text-secondary);
+  }
+  .today-card .today-close {
+    position: absolute; top: 8px; right: 12px;
+    width: 24px; height: 24px; border-radius: 50%;
+    border: none; background: rgba(0,0,0,0.05);
+    font-size: 12px; cursor: pointer; color: #999;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .today-card .today-close:hover { background: rgba(0,0,0,0.12); color: #666; }
+
+  /* Quiz Overlay */
+  .quiz-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .quiz-overlay.open {
+    opacity: 1; pointer-events: auto;
+  }
+
+  .quiz-panel {
+    background: var(--card-bg);
+    border-radius: 22px;
+    width: 100%; max-width: 540px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column;
+  }
+  .quiz-overlay.open .quiz-panel { transform: translateY(0); }
+
+  /* Progress bar */
+  .quiz-progress-wrap {
+    padding: 16px 24px 0;
+    flex-shrink: 0;
+  }
+  .quiz-progress-text {
+    font-size: 13px; color: var(--text-secondary);
+    margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px;
+  }
+  .quiz-progress-bar {
+    width: 100%; height: 4px; background: rgba(0,0,0,0.06);
+    border-radius: 2px; overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%; background: var(--accent);
+    border-radius: 2px; transition: width 0.4s ease;
+  }
+
+  /* Quiz content area */
+  .quiz-content {
+    padding: 28px 28px 32px;
+    flex: 1;
+    display: flex; flex-direction: column;
+    min-height: 280px;
+  }
+  .quiz-content .quiz-q {
+    font-size: 20px; font-weight: 700; color: var(--text);
+    margin-bottom: 24px; line-height: 1.5; text-align: center;
+  }
+  .quiz-options {
+    display: flex; flex-direction: column; gap: 10px;
+    flex: 1; justify-content: center;
+  }
+  .quiz-option {
+    padding: 14px 20px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(0,0,0,0.08);
+    background: #fff;
+    cursor: pointer;
+    font-size: 15px; line-height: 1.5;
+    color: var(--text);
+    transition: all 0.25s;
+    text-align: left;
+    font-family: inherit;
+  }
+  .quiz-option:hover {
+    border-color: var(--accent);
+    background: #fef9f5;
+    transform: translateX(4px);
+  }
+  .quiz-option.selected {
+    border-color: var(--accent);
+    background: rgba(199,125,75,0.08);
+    transform: translateX(4px);
+  }
+  .quiz-option .opt-letter {
+    display: inline-block;
+    width: 26px; height: 26px; line-height: 26px;
+    border-radius: 50%;
+    background: var(--accent); color: #fff;
+    text-align: center; font-size: 12px; font-weight: 700;
+    margin-right: 10px;
+  }
+
+  /* Result page */
+  .quiz-result {
+    text-align: center;
+    animation: fadeInUp 0.5s ease;
+  }
+  .quiz-result .result-emoji {
+    font-size: 52px; margin-bottom: 8px;
+  }
+  .quiz-result .result-name {
+    font-size: 26px; font-weight: 700; color: var(--text);
+    margin-bottom: 2px;
+  }
+  .quiz-result .result-eng {
+    font-size: 14px; color: var(--text-secondary);
+    margin-bottom: 16px; font-style: italic;
+  }
+  .quiz-result .result-desc {
+    font-size: 15px; line-height: 1.8; color: var(--text);
+    text-align: left; margin-bottom: 22px;
+    padding: 18px; background: #fafaf7; border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .quiz-result .result-subtypes {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .quiz-result .result-subtype {
+    padding: 8px 16px; border-radius: 50px;
+    font-size: 13px; font-weight: 600;
+    background: rgba(199,125,75,0.08); color: var(--accent);
+    border: 1px solid rgba(199,125,75,0.2);
+  }
+  .btn.quiz-done-btn {
+    margin: 0 auto; display: inline-flex;
+  }
+
+  /* Fade slide animation for questions */
+  .quiz-content.q-slide-out {
+    animation: qSlideOut 0.25s ease forwards;
+  }
+  .quiz-content.q-slide-in {
+    animation: qSlideIn 0.35s ease forwards;
+  }
+  @keyframes qSlideOut {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(-30px); }
+  }
+  @keyframes qSlideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @media (max-width: 500px) {
+    .quiz-overlay { padding: 0; align-items: flex-end; }
+    .quiz-panel {
+      max-width: 100%; border-radius: 22px 22px 0 0;
+      max-height: 92vh;
+    }
+    .quiz-content { padding: 22px 18px 24px; }
+    .quiz-content .quiz-q { font-size: 18px; }
+    .quiz-option { font-size: 14px; padding: 12px 16px; }
+    .btti-entry { margin-left: 16px; margin-right: 16px; }
+  }
+
+  /* Creator badge – top right */
+  .creator-badge {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 50px;
+    padding: 8px 16px;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    transition: all 0.25s;
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(8px);
+  }
+  .creator-badge:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+  }
+  .creator-badge .gh-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 500px) {
+    .creator-badge {
+      top: 8px;
+      right: 8px;
+      font-size: 11px;
+      padding: 6px 12px;
+      gap: 5px;
+    }
+    .creator-badge .gh-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
 </style>
 </head>
 <body>
+
+<a class="creator-badge" href="https://github.com/Qinging-wu" target="_blank" rel="noopener" title="GitHub Profile">
+  <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+  </svg>
+  Creator：Qinging_267
+</a>
 
 <div class="header">
   <div class="brand">Manu · 玛努</div>
   <h1>Six Lenses</h1>
   <div class="subtitle">多民族对照 &nbsp;·&nbsp; One Experience, Six Worldviews</div>
+</div>
+
+<div class="today-card" id="todayCard" onclick="reopenResult()">
+  <div class="today-emoji" id="todayEmoji"></div>
+  <div class="today-info">
+    <div class="today-label">Today's ManuBTI</div>
+    <div class="today-name" id="todayName"></div>
+    <div class="today-subs" id="todaySubs"></div>
+  </div>
+  <button class="today-close" onclick="event.stopPropagation(); dismissTodayCard()">✕</button>
 </div>
 
 <div class="question-banner" id="questionBanner" onclick="flipAll()">
@@ -743,6 +1036,12 @@
   <span class="ai-icon">💬</span> Ask Manu AI
 </button>
 
+<div class="btti-entry" id="bttiEntry" onclick="openQuiz()">
+  <div class="btti-icon">🌿</div>
+  <div class="btti-title">Discover Your ManuBTI</div>
+  <div class="btti-sub">Which ethnic tradition's worldview<br>resonates with your soul?</div>
+</div>
+
 <div class="wonder-line" id="wonderLine">
   ✨ The wonder of seeing <em>one</em> human experience<br>refracted through <em>six</em> cultures.
 </div>
@@ -752,6 +1051,19 @@
 </div>
 
 <div class="status-bar" id="statusBar">0 / 6 cards revealed</div>
+
+<!-- ===== ManuBTI Quiz Overlay ===== -->
+<div class="quiz-overlay" id="quizOverlay">
+  <div class="quiz-panel">
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-text" id="quizProgressText">1 / 12</div>
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quizProgressFill" style="width: 8%"></div>
+      </div>
+    </div>
+    <div class="quiz-content" id="quizContent"></div>
+  </div>
+</div>
 
 <!-- ===== AI Chat Overlay ===== -->
 <div class="chat-overlay" id="chatOverlay">
@@ -988,6 +1300,402 @@
     this.style.height = 'auto';
     this.style.height = Math.min(this.scrollHeight, 100) + 'px';
   });
+
+  // ===== ManuBTI Quiz Logic =====
+  const quizOverlay = document.getElementById('quizOverlay');
+  const quizContent = document.getElementById('quizContent');
+  const quizProgressText = document.getElementById('quizProgressText');
+  const quizProgressFill = document.getElementById('quizProgressFill');
+  const todayCard = document.getElementById('todayCard');
+  const todayEmoji = document.getElementById('todayEmoji');
+  const todayName = document.getElementById('todayName');
+  const todaySubs = document.getElementById('todaySubs');
+
+  // ---- Data ----
+  const DIMENSIONS = [
+    { id: 'rhythm', name: '内在节奏', types: [
+      { key: 'wind', name: '风行者', emoji: '🌬️', label: '创意涌动，思维灵动，永远在路上——如藏医rlung之风，永不停息' },
+      { key: 'mountain', name: '山根者', emoji: '🏔️', label: '深沉扎根，安静观察——如苗医冷热观，在深山云雾中沉淀智慧' },
+      { key: 'steppe', name: '草原心', emoji: '🐎', label: '独立辽阔，内心有一整片草原——如蒙医Hei能量，与天地同呼吸' }
+    ]},
+    { id: 'temperature', name: '外在温度', types: [
+      { key: 'desertFlame', name: '漠中火', emoji: '🔥', label: '热烈直接，敢爱敢恨——如维医热性气质，像沙漠之火般炽热' },
+      { key: 'glacierSage', name: '冰川思', emoji: '❄️', label: '冷静深邃，思虑周密——如维医寒性气质，如冰川般深邃而清澈' },
+      { key: 'riverBreeze', name: '河畔风', emoji: '🌿', label: '温润调和，顺势而为——如傣医四元素平衡，如河畔微风般柔和' }
+    ]},
+    { id: 'connection', name: '连接方式', types: [
+      { key: 'bridgeBuilder', name: '架桥者', emoji: '🌉', label: '串联人心，善于沟通——如壮医三道两路，让气血与人情畅通无阻' },
+      { key: 'riverWeaver', name: '织河者', emoji: '🌊', label: '随形变化，创意不竭——如傣医水元素，在流动中不断重塑自我' },
+      { key: 'loneWalker', name: '独行者', emoji: '🦅', label: '自由至上，自给自足——如蒙医游牧精神，一个人的天空也完整' }
+    ]}
+  ];
+
+  const QUESTIONS = [
+    // Part 1: 内在节奏 (rhythm)
+    { dim: 'rhythm', q: '周末早上醒来，你更倾向于？',
+      opts: ['跟着当下的感觉走，没有固定计划', '安安静静泡杯茶，享受深度独处时光', '出门走走，感受天地的开阔与自由'] },
+    { dim: 'rhythm', q: '面对一个复杂的新问题，你的第一反应是？',
+      opts: ['跳进去尝试，边做边想，不怕犯错', '先退一步观察全局，再慢慢深入核心', '凭直觉独立摸索，不急着求助他人'] },
+    { dim: 'rhythm', q: '哪种自然环境让你感觉最像"回家"？',
+      opts: ['高原的风吹过经幡——灵动而飘忽','雾气缭绕的深山老林——沉静而神秘', '一眼望不到边的草原和天空——辽阔而自由'] },
+    { dim: 'rhythm', q: '朋友会怎么描述你的气质？',
+      opts: ['"抓不住的风一样的人，永远有新点子"','"像山一样让人安心的存在，深不可测"', '"有距离感但让人忍不住想靠近的引力场"'] },
+    // Part 2: 外在温度 (temperature)
+    { dim: 'temperature', q: '有人当众反驳你的观点，你会？',
+      opts: ['当场回应，情绪和立场都写在脸上', '表面不动声色，事后在心里仔细拆解', '先听听对方的道理，再温和地找到共同点'] },
+    { dim: 'temperature', q: '做重要决定时，你更信任什么？',
+      opts: ['当下的直觉和身体的冲动——gut feeling', '冷静的逻辑和充分的信息——深思熟虑', '既有理性判断，也认真听周围人的建议'] },
+    { dim: 'temperature', q: '如果把自己比作一种饮品，你是？',
+      opts: ['滚烫的沙漠红茶——浓烈，入口就记住','冰镇天山雪水——清冽，需要慢慢去品', '温热的竹筒香茶——不烫不凉，刚好入口'] },
+    { dim: 'temperature', q: '面对一场人际冲突，你更像什么？',
+      opts: ['暴风雨——来得快去得也快，不记仇', '冰川——表面平静，深处却有强大的力量', '河流——绕过障碍，不正面硬碰硬'] },
+    // Part 3: 连接方式 (connection)
+    { dim: 'connection', q: '小组合作中，你天然会做什么？',
+      opts: ['主动串联每个人的想法，让团队顺畅运转', '根据团队需要灵活切换角色，不固定自己', '领走自己擅长的部分，独立安静地完成'] },
+    { dim: 'connection', q: '在一个完全陌生的地方，你会？',
+      opts: ['快速和当地人聊天，了解这里的故事与人情', '没有固定计划，看心情随意探索每个角落', '一个人慢慢走，用自己的节奏感受这个地方'] },
+    { dim: 'connection', q: '你的社交圈长什么样？',
+      opts: ['一张密密麻麻的连接网，各行各业都有朋友', '不同阶段有不同圈子，你也在不断变化', '只有几个深交的人，但可以走一辈子'] },
+    { dim: 'connection', q: '你内心深处最看重什么？',
+      opts: ['人与人之间的理解、连接与和谐', '不断成长、变化、成为新版本的自己', '自由——不被任何东西束缚的权利'] }
+  ];
+
+  // 27 Integrated personalities
+  const PERSONALITIES = {
+    'wind-desertFlame-bridgeBuilder': {
+      name: '燎原之风', eng: 'Prairie Fire Wind',
+      emoji: '🔥',
+      desc: '你如藏医rlung之风永不停息，带着维医热性气质的炽烈果敢，又像壮医三道两路般串联人心。你是人群中的火把——走到哪里，哪里就被点燃。你的热情不必收敛，因为那是你最珍贵的天赋。当藏医的风、维医的火、壮医的气血在你身上交汇，你成了不可阻挡的力量。'
+    },
+    'wind-desertFlame-riverWeaver': {
+      name: '变幻之焰', eng: 'Shapeshifting Flame',
+      emoji: '🎆',
+      desc: '藏医rlung赋予你灵动的创造力，维医热性气质让你热烈不拘，傣医水元素的流动哲学又让你不断重塑自己。你像一团不断变换形状的火焰——没有人能预测你的下一个形态。你的生命不是为了遵循轨迹，而是为了创造新的轨迹。'
+    },
+    'wind-desertFlame-loneWalker': {
+      name: '孤火流风', eng: 'Lone Fire Wind',
+      emoji: '🏜️',
+      desc: '你体内同时住着藏医rlung那永不安分的风，以及维医热性气质那滚烫的火焰。蒙医游牧精神的独立被你活成了孤傲——你不需要观众，因为你的内心已经足够辽阔。风中独行，火中自暖，这是你选择的方式。'
+    },
+    'wind-glacierSage-bridgeBuilder': {
+      name: '穿云之风', eng: 'Cloud-Piercing Wind',
+      emoji: '☁️',
+      desc: '藏医rlung的灵动与维医寒性气质的深邃在你身上达成微妙的平衡——你既是自由的思考者，又是冷静的联结者。壮医三道两路在你手中变成了串联人心的通道。你像穿过云层的风，既有高度，又有方向。'
+    },
+    'wind-glacierSage-riverWeaver': {
+      name: '冰风织梦者', eng: 'Frost-Wind Dreamweaver',
+      emoji: '❄️',
+      desc: '藏医rlung之风让你永远在流动，维医寒性气质赋予你清冷深邃的洞察力，而傣医水元素的柔韧让你能在任何环境中重新编织自己。你是冰与风的织梦者——在理性与诗意之间，你建造了一个别人只能仰望的世界。'
+    },
+    'wind-glacierSage-loneWalker': {
+      name: '北风行者', eng: 'North Wind Walker',
+      emoji: '🌪️',
+      desc: '藏医rlung让你像风一样飘忽不定，维医寒性气质赋予你清冷孤高的内核，蒙医游牧的独立精神让你不需要任何同行者。你是北风——清冽、有力、独自穿行。别人觉得你冷淡，但你知道，你自己就是一个完整的世界。'
+    },
+    'wind-riverBreeze-bridgeBuilder': {
+      name: '春风化雨', eng: 'Spring Breeze Rain',
+      emoji: '🌸',
+      desc: '藏医rlung之风遇见傣医四元素的平衡温润，再融合壮医三道两路的沟通天赋——你成了最让人如沐春风的存在。你不急不躁，随风入夜，润物无声。人们愿意靠近你，因为你让他们感到被理解、被接纳。'
+    },
+    'wind-riverBreeze-riverWeaver': {
+      name: '流水行云', eng: 'Flowing Cloud',
+      emoji: '☁️',
+      desc: '藏医rlung的灵动、傣医四元素平衡的柔和、水元素的流动——你像天上的云和水里的影，毫不费力地适应一切，却从不迷失自己。你的柔软不是软弱，而是一种至高的智慧。在变化中保持完整，这只有你能做到。'
+    },
+    'wind-riverBreeze-loneWalker': {
+      name: '独步清风', eng: 'Solitary Breeze',
+      emoji: '🍃',
+      desc: '藏医rlung之风赋予你自由的灵魂，傣医的温润让你不锋利不伤人，蒙医游牧的独立让你乐于独行。你是一阵清风——不需要被看见，不需要被铭记，但经过之处留下一丝凉意。一个人就是一支队伍，你活得完整而轻盈。'
+    },
+    'mountain-desertFlame-bridgeBuilder': {
+      name: '火山之心', eng: 'Volcanic Heart',
+      emoji: '🌋',
+      desc: '苗医深山哲学的沉静之下，是维医热性气质那滚烫的岩浆。你用壮医三道两路的智慧串联众人，像一座沉默的火山——表面稳重，内心炽烈，一旦爆发便不可阻挡。你的热情不需要声张，它自然会吸引需要温暖的人。'
+    },
+    'mountain-desertFlame-riverWeaver': {
+      name: '熔岩之脉', eng: 'Lava Vein',
+      emoji: '🔥',
+      desc: '苗医冷热观让你深扎于大地，维医热性气质给你炽烈的内核，傣医水元素的流动又让你缓慢但不可阻挡地前行。你像地下奔涌的熔岩——不声张，不炫耀，但一旦成形，世界都会为你让路。'
+    },
+    'mountain-desertFlame-loneWalker': {
+      name: '孤峰之火', eng: 'Solitary Peak Fire',
+      emoji: '⛰️',
+      desc: '苗医深山哲学的深沉、维医热性气质的炽热、蒙医游牧精神的独立——三者在你身上融合成一座孤峰上的火焰。你一个人燃烧，不需要被看见，因为你知道，照亮自己就够了。山的沉默，火的温度，独行的自由，都是你的。'
+    },
+    'mountain-glacierSage-bridgeBuilder': {
+      name: '冰川之桥', eng: 'Glacier Bridge',
+      emoji: '🏛️',
+      desc: '苗医深山的厚重、维医寒性气质的清冽、壮医三道两路的通达——你是冰川之桥，古老而稳固，跨越时间的智者。你不多言，但每句话都有分量；你不急躁，但每一步都算数。人们信任你，因为你就是定海神针。'
+    },
+    'mountain-glacierSage-riverWeaver': {
+      name: '深谷幽泉', eng: 'Deep Valley Spring',
+      emoji: '💧',
+      desc: '苗医深山赋予你扎根的力量，维医寒性气质让你清澈深邃，傣医水元素的柔韧让你安静地创造。你是深谷中的一泓幽泉——不声不响，却滋养着周围的一切。内向不是缺陷，而是一种深邃的力量。'
+    },
+    'mountain-glacierSage-loneWalker': {
+      name: '孤山静雪', eng: 'Silent Mountain Snow',
+      emoji: '🏔️',
+      desc: '苗医的深山哲思、维医寒性气质的清冷、蒙医游牧的独立——你是孤山山顶的静雪，彻底自足，安静到令人敬畏。你不解释自己，也不需要被理解。山的沉默就是你的语言，雪的纯净就是你的灵魂。'
+    },
+    'mountain-riverBreeze-bridgeBuilder': {
+      name: '山间暖溪', eng: 'Mountain Warm Stream',
+      emoji: '🌿',
+      desc: '苗医深山的稳重遇见傣医四元素的温润，壮医三道两路的通达让你成为山间最温暖的那条溪流。你不急不争，却总能把人聚到一起。稳重而不冰冷，温暖而不炙热——你恰恰好在最舒服的温度。'
+    },
+    'mountain-riverBreeze-riverWeaver': {
+      name: '大地织者', eng: 'Earth Weaver',
+      emoji: '🌍',
+      desc: '苗医教你扎根大地，傣医教你随水流动，两者融合——你成了大地织者，缓慢但持续地编织生命的意义。你不追求速度，因为你知道深度才重要。像山一样沉稳，像水一样不息，你在自己的节奏里创造永恒。'
+    },
+    'mountain-riverBreeze-loneWalker': {
+      name: '深山隐者', eng: 'Deep Mountain Hermit',
+      emoji: '🌲',
+      desc: '苗医的深山哲学、傣医的温润平和、蒙医的独立精神——你是深山隐者，遗世独立，在山林里活成传说。你不排斥人群，只是更喜欢一个人的圆满。安静地活着，安静地老去，这是你选择的最深的自由。'
+    },
+    'steppe-desertFlame-bridgeBuilder': {
+      name: '烈日长风', eng: 'Blazing Sun Wind',
+      emoji: '☀️',
+      desc: '蒙医辽阔草原的胸怀遇见维医热性气质的炽烈，壮医三道两路的沟通让你走到哪里都是太阳。你热烈、辽阔、无法忽视——人们追随你，不是因为你命令他们，而是因为你照亮了他们前行的路。'
+    },
+    'steppe-desertFlame-riverWeaver': {
+      name: '野火逐风', eng: 'Wildfire Chasing Wind',
+      emoji: '🔥',
+      desc: '蒙医的辽阔、维医的炽热、傣医的流动——你是草原上追逐风的野火。规则在你眼里从来不是束缚，而是用来打破的。你的创造力像野火一样蔓延，没人能预测你下一个方向，包括你自己。'
+    },
+    'steppe-desertFlame-loneWalker': {
+      name: '孤狼之火', eng: 'Lone Wolf Flame',
+      emoji: '🐺',
+      desc: '蒙医草原的辽阔赋予你自由的灵魂，维医热性气质让你炽热而野性。你像草原上的孤狼——不需要狼群也能存活，但内心燃烧着不灭的火焰。独行不是孤独，而是你选择的最纯粹的存在方式。'
+    },
+    'steppe-glacierSage-bridgeBuilder': {
+      name: '天边智者', eng: 'Horizon Sage',
+      emoji: '🌅',
+      desc: '蒙医给你站在草原望天边的视野，维医寒性气质赋予你冷静的智慧，壮医三道两路让你将这些智慧传递给众人。你是天边的智者——站得远，看得清，却从不吝于将自己的光借给别人。'
+    },
+    'steppe-glacierSage-riverWeaver': {
+      name: '苍穹织者', eng: 'Sky Weaver',
+      emoji: '🏹',
+      desc: '蒙医天地之辽阔、维医寒性之深邃、傣医水元素之柔韧——你是苍穹织者，在星空与大地之间编织思想与自由。你的格局大到让人仰望，却又温柔到让人想走近。你织的不是布，是可能性。'
+    },
+    'steppe-glacierSage-loneWalker': {
+      name: '星空独行者', eng: 'Starlight Wanderer',
+      emoji: '⭐',
+      desc: '蒙医的辽阔天空、维医的清冷深邃、加上你骨子里的独立——你是星空下的独行者。仰望星空，不需要同行者，因为宇宙本身就是你的伴侣。沉默不是空虚，而是一种与天地对话的方式。'
+    },
+    'steppe-riverBreeze-bridgeBuilder': {
+      name: '草原和风', eng: 'Steppe Breeze',
+      emoji: '🍂',
+      desc: '蒙医草原的辽阔、傣医四元素的温润、壮医三道两路的通达——你是草原上最温柔的风。开阔而不孤傲，温和而不怯懦。人人都想追随你，不是因为你的强势，而是因为和你在一起，他们也变得辽阔了。'
+    },
+    'steppe-riverBreeze-riverWeaver': {
+      name: '游牧诗人', eng: 'Nomadic Poet',
+      emoji: '🎵',
+      desc: '蒙医的游牧精神让你永不安居，傣医水元素的柔韧让你顺势而变——你是草原上的游牧诗人。四处流浪，一路留下诗与故事。安定的生活不是你的追求，因为你知道，最美的诗句永远在路上。'
+    },
+    'steppe-riverBreeze-loneWalker': {
+      name: '天地独客', eng: 'Sky & Earth Solitaire',
+      emoji: '🦅',
+      desc: '蒙医的辽阔赋予你鹰的视野，傣医的温润让你不锋利不伤人，而你对自由的渴望让你选择独自飞行。你是天地间的独客——世界之大，一个人就够了。不是因为孤独，而是因为完整。'
+    }
+  };
+
+  // ---- State ----
+  let quizState = { currentQ: 0, scores: {}, answers: [], result: null };
+
+  function resetQuiz() {
+    quizState = {
+      currentQ: 0,
+      scores: { rhythm: [0,0,0], temperature: [0,0,0], connection: [0,0,0] },
+      answers: [],
+      result: null
+    };
+  }
+
+  // ---- Open / Close ----
+  function openQuiz() {
+    resetQuiz();
+    // Restore previous result if exists
+    const saved = sessionStorage.getItem('manu_btti_result');
+    if (saved) {
+      try { quizState.result = JSON.parse(saved); } catch(e) {}
+    } else {
+      quizState.result = null;
+    }
+    quizOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (quizState.result) {
+      showResult();
+    } else {
+      renderQuestion(0);
+    }
+  }
+
+  function closeQuiz() {
+    quizOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (quizState.result) {
+      showTodayCard(quizState.result);
+    }
+  }
+
+  quizOverlay.addEventListener('click', function(e) {
+    if (e.target === quizOverlay) closeQuiz();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && quizOverlay.classList.contains('open')) {
+      closeQuiz();
+    }
+  });
+
+  // ---- Render Question ----
+  function renderQuestion(idx, animate) {
+    quizState.currentQ = idx;
+    const q = QUESTIONS[idx];
+    const progress = Math.round((idx + 1) / QUESTIONS.length * 100);
+    quizProgressText.textContent = (idx + 1) + ' / ' + QUESTIONS.length;
+    quizProgressFill.style.width = progress + '%';
+
+    let html = '<div class="quiz-content';
+    if (animate) html += ' q-slide-in';
+    html += '">';
+    html += '<div class="quiz-q">' + q.q + '</div>';
+    html += '<div class="quiz-options">';
+    const letters = ['A', 'B', 'C'];
+    q.opts.forEach((opt, i) => {
+      html += '<div class="quiz-option" data-idx="' + i + '"><span class="opt-letter">' + letters[i] + '</span>' + opt + '</div>';
+    });
+    html += '</div></div>';
+
+    quizContent.innerHTML = html;
+
+    // Bind click handlers
+    quizContent.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.addEventListener('click', function() {
+        handleAnswer(idx, parseInt(this.dataset.idx));
+      });
+    });
+  }
+
+  // ---- Handle Answer ----
+  function handleAnswer(qIdx, choiceIdx) {
+    // Highlight selected
+    quizContent.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    quizContent.querySelector('.quiz-option[data-idx="' + choiceIdx + '"]').classList.add('selected');
+
+    // Record score
+    const q = QUESTIONS[qIdx];
+    const dimIdx = DIMENSIONS.findIndex(d => d.id === q.dim);
+    quizState.scores[q.dim][choiceIdx]++;
+
+    // Animate out then next
+    const contentEl = quizContent.querySelector('.quiz-content');
+    contentEl.classList.add('q-slide-out');
+
+    setTimeout(() => {
+      if (qIdx < QUESTIONS.length - 1) {
+        renderQuestion(qIdx + 1, true);
+      } else {
+        // Calculate result
+        const result = calculateResult();
+        quizState.result = result;
+        sessionStorage.setItem('manu_btti_result', JSON.stringify(result));
+        showResult();
+      }
+    }, 250);
+  }
+
+  // ---- Calculate Result ----
+  function calculateResult() {
+    const winners = DIMENSIONS.map(dim => {
+      const scores = quizState.scores[dim.id];
+      const maxScore = Math.max(...scores);
+      const maxIdx = scores.indexOf(maxScore);
+      // Tie-break: pick first max
+      return dim.types[maxIdx];
+    });
+    const key = winners.map(w => w.key).join('-');
+    const personality = PERSONALITIES[key] || {
+      name: winners.map(w => w.name).join('·'), eng: 'Mystery Soul',
+      emoji: '✨',
+      desc: '你是六种医学传统交汇处的独特存在。藏医的rlung之风、蒙医的草原辽阔、维医的四种体液智慧、傣医的四元素平衡、苗医的冷热哲学、壮医的三道两路——在你身上都有回响。你是一个行走的文化交汇点，用你自己的方式诠释着人类古老的身体智慧。'
+    };
+    return {
+      key,
+      name: personality.name,
+      eng: personality.eng,
+      emoji: personality.emoji,
+      desc: personality.desc,
+      subtypes: winners
+    };
+  }
+
+  // ---- Show Result ----
+  function showResult() {
+    const r = quizState.result;
+    quizProgressText.textContent = 'Your ManuBTI';
+    quizProgressFill.style.width = '100%';
+
+    let html = '<div class="quiz-content q-slide-in">';
+    html += '<div class="quiz-result">';
+    html += '<div class="result-emoji">' + r.emoji + '</div>';
+    html += '<div class="result-name">' + r.name + '</div>';
+    html += '<div class="result-eng">' + r.eng + '</div>';
+    html += '<div class="result-desc">' + r.desc + '</div>';
+    html += '<div class="result-subtypes">';
+    r.subtypes.forEach(s => {
+      html += '<div class="result-subtype">' + s.emoji + ' ' + s.name + '</div>';
+    });
+    html += '</div>';
+    html += '<button class="btn quiz-done-btn" onclick="retakeQuiz()">🔄 再测一次</button>';
+    html += '<button class="btn primary quiz-done-btn" onclick="closeQuiz()">✕ 关闭</button>';
+    html += '</div></div>';
+
+    quizContent.innerHTML = html;
+  }
+
+  function retakeQuiz() {
+    resetQuiz();
+    quizState.result = null;
+    sessionStorage.removeItem('manu_btti_result');
+    todayCard.classList.remove('visible');
+    renderQuestion(0);
+  }
+
+  function reopenResult() {
+    if (!quizState.result) {
+      const saved = sessionStorage.getItem('manu_btti_result');
+      if (saved) {
+        try { quizState.result = JSON.parse(saved); } catch(e) { return; }
+      } else { return; }
+    }
+    quizOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    showResult();
+  }
+
+  // ---- Today Card ----
+  function showTodayCard(result) {
+    todayEmoji.textContent = result.emoji;
+    todayName.textContent = result.name + ' · ' + result.eng;
+    todaySubs.textContent = result.subtypes.map(s => s.emoji + ' ' + s.name).join('  ');
+    todayCard.classList.add('visible');
+  }
+
+  function dismissTodayCard() {
+    todayCard.classList.remove('visible');
+  }
+
+  // Restore today card on page load
+  (function() {
+    const saved = sessionStorage.getItem('manu_btti_result');
+    if (saved) {
+      try {
+        const r = JSON.parse(saved);
+        quizState.result = r;
+        showTodayCard(r);
+      } catch(e) {}
+    }
+  })();
 </script>
 </body>
 </html>

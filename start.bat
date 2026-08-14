@@ -1,12 +1,12 @@
 @echo off
+setlocal
 chcp 65001 >nul
 title Manu AI - Starting...
 
 cd /d "%~dp0backend"
 
 echo.
-echo   🏔️  Manu · 玛努 — Six Lenses
-echo   ═══════════════════════════════
+echo   Manu - Six Lenses
 echo.
 echo   Starting AI backend...
 echo.

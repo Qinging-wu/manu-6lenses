@@ -13,10 +13,10 @@ app.use(express.json());
 // Serve static files from the current directory
 app.use(express.static(__dirname));
 
-// --------------- DeepSeek API proxy ---------------
-const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
-const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
-const DEEPSEEK_URL = 'https://api.deepseek.com/v1/chat/completions';
+// --------------- Gemini API proxy ---------------
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models';
 
 // System prompt: position the AI as a cultural education guide
 const SYSTEM_PROMPT = `You are Manu (玛努), a warm and knowledgeable cultural education guide.
@@ -31,73 +31,61 @@ Guidelines:
 - Keep replies concise and engaging (2-4 paragraphs unless the user asks for depth).
 - Use emoji sparingly and warmly.`;
 
-// Conversation history store (in-memory, per session — resets on server restart)
-// Keyed by a simple sessionId passed from the client
-const sessions = new Map();
-const MAX_HISTORY = 20; // keep last 20 messages per session
-
 app.post('/api/chat', async (req, res) => {
   try {
-    const { message, sessionId } = req.body;
+    const { messages } = req.body;
 
-    if (!message || typeof message !== 'string') {
-      return res.status(400).json({ error: 'Missing or invalid "message" field.' });
+    if (!messages || !messages.length) {
+      return res.status(400).json({ error: 'Missing "messages" array.' });
     }
 
-    // Get or create session history
-    const sid = sessionId || 'default';
-    if (!sessions.has(sid)) {
-      sessions.set(sid, [{ role: 'system', content: SYSTEM_PROMPT }]);
-    }
-    const history = sessions.get(sid);
-
-    // Add user message
-    history.push({ role: 'user', content: message });
-
-    // Trim history if too long (keep system prompt + recent messages)
-    if (history.length > MAX_HISTORY + 1) {
-      const systemMsg = history[0];
-      const recent = history.slice(-MAX_HISTORY);
-      sessions.set(sid, [systemMsg, ...recent]);
+    for (const m of messages) {
+      if (!m.role || typeof m.content !== 'string') {
+        return res.status(400).json({ error: 'Each message needs "role" and "content".' });
+      }
     }
 
-    // Call DeepSeek API
-    const response = await fetch(DEEPSEEK_URL, {
+    if (!GEMINI_API_KEY) {
+      return res.status(502).json({ error: 'API key not configured on the server.' });
+    }
+
+    // Convert client roles ('assistant') to Gemini roles ('model')
+    const contents = messages.map((m) => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }],
+    }));
+
+    // Call Gemini API
+    const response = await fetch(`${GEMINI_URL}/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: DEEPSEEK_MODEL,
-        messages: history,
-        temperature: 0.7,
-        max_tokens: 1024,
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents,
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 1024,
+        },
       }),
     });
 
     if (!response.ok) {
       const err = await response.text();
-      console.error('DeepSeek API error:', response.status, err);
+      console.error('Gemini API error:', response.status, err);
+      if (response.status === 429) {
+        return res.status(429).json({
+          error: 'Oops, our little free daily budget is all used up for today~ Take a break and come chat with Manu again tomorrow! 🌙',
+        });
+      }
       return res.status(502).json({ error: 'AI service returned an error. Please try again later.' });
     }
 
     const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content;
+    const reply = data.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('');
 
     if (!reply) {
-      console.error('Unexpected DeepSeek response structure:', JSON.stringify(data).slice(0, 500));
+      console.error('Unexpected Gemini response structure:', JSON.stringify(data).slice(0, 500));
       return res.status(502).json({ error: 'Received an empty response from AI. Please try again.' });
-    }
-
-    // Add assistant reply to history
-    history.push({ role: 'assistant', content: reply });
-
-    // Keep history bounded
-    if (history.length > MAX_HISTORY + 1) {
-      const systemMsg = history[0];
-      const recent = history.slice(-MAX_HISTORY);
-      sessions.set(sid, [systemMsg, ...recent]);
     }
 
     return res.json({ reply });
@@ -109,7 +97,7 @@ app.post('/api/chat', async (req, res) => {
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', model: DEEPSEEK_MODEL });
+  res.json({ status: 'ok', model: GEMINI_MODEL });
 });
 
 // --------------- Start ---------------

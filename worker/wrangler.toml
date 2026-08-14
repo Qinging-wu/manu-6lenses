@@ -1,6 +1,12 @@
 name = "manu-ai"
 main = "worker.js"
 compatibility_date = "2025-06-14"
+workers_dev = true
+preview_urls = true
+
+routes = [
+  { pattern = "manu6lenses.win", custom_domain = true }
+]
 
 [observability]
 enabled = true
