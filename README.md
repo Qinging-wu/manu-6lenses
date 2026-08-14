@@ -8,6 +8,12 @@ An interactive cultural-education website with the theme **"One Experience, Six 
 
 Live site: <https://manu6lenses.win>
 
+## Quick Start
+
+**Just use the live site — no setup needed.** Open <https://manu6lenses.win> in your browser and start exploring right away. It's hosted on Cloudflare, fully free, and requires no API key or local installation.
+
+Local development (including its own API key) is only needed if you want to run **and modify** the code yourself. See [Run Locally](#run-locally).
+
 ## Features
 
 - **Six Lenses flip cards**: pick a topic (e.g. sleeplessness) and flip through six ethnic-medicine perspectives one by one
@@ -38,6 +44,8 @@ Live site: <https://manu6lenses.win>
 ```
 
 ## Run Locally
+
+> This is only for local development of the code itself. **Visitors don't need any of this** — just use the live site above. The API key below is consumed server-side for local testing only and never appears on the webpage.
 
 1. Put your Google Gemini API key in `backend/.env`:
 
