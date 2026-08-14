@@ -12,7 +12,7 @@ An interactive cultural-education website with the theme **"One Experience, Six 
 
 ## What You Can Do
 
-- **Six Lenses flip cards** — pick a topic (e.g. sleeplessness) and flip through how each of the six traditions views it
+- **Six Lenses flip cards** — flip the cards to see how six different traditions each view the phenomenon of 'insomnia' as an introduction
 - **ManuBTI quiz** — a 12-question journey across three dimensions (inner rhythm · outer temperature · way of connecting) that maps you to one of **27 integrated personality types**, each woven from the wisdom of the six traditions
 - **Ask Manu AI** — chat with an AI cultural guide that answers from a cultural perspective (never medical advice)
 
