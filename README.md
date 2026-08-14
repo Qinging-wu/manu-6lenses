@@ -2,9 +2,11 @@
 
 **English** · [中文 README](./README_CN.md)
 
-An interactive cultural-education website with the theme **"One Experience, Six Worldviews."** It explores how the same human experience can be understood through six ethnic medical traditions — Tibetan, Mongolian, Uyghur, Dai, Miao, and Zhuang.
+> ### ✨ Just want to try it? Go to **<https://manu6lenses.win>** — free, no sign-up, works right in your browser. No setup needed.
+>
+> The sections about local development and deployment are for developers who want to fork their own copy. **If you only want to use Manu, the link above is all you need — you can ignore the rest of this README.**
 
-👉 **Visit: <https://manu6lenses.win>** — free, no sign-up, works right in your browser.
+An interactive cultural-education website with the theme **"One Experience, Six Worldviews."** It explores how the same human experience can be understood through six ethnic medical traditions — Tibetan, Mongolian, Uyghur, Dai, Miao, and Zhuang.
 
 > This site is a cultural-education product, never health advice.
 
@@ -29,7 +31,7 @@ An interactive cultural-education website with the theme **"One Experience, Six 
 
 ## For Developers (Forking Your Own Instance)
 
-The sections below are only relevant if you want to fork this repo and run your own copy. If you just want to **use** Manu, visit <https://manu6lenses.win> — nothing below applies to you.
+The sections below are only relevant if you want to fork this repo and run your own copy. (Just want to use Manu? See the link at the top of this page.)
 
 > The live `manu6lenses.win` is the author's own deployment. You don't have access to it; you'll deploy to your own Worker URL or your own domain.
 
