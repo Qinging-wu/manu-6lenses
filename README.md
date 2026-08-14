@@ -1,53 +1,53 @@
 # Manu · 玛努 — Six Lenses
 
-**中文** · [English](./README_EN.md)
+**English** · [中文 README](./README_CN.md)
 
-一个民族文化科普互动网站，主题「一个体验，六种世界观」。通过交互式翻转卡片，将失眠等人类共通体验对照展示藏医、蒙医、维医、傣医、苗医、壮医六大民族医学各自的理解方式；并附带 AI 文化教育问答「Ask Manu AI」。
+An interactive cultural-education website with the theme **"One Experience, Six Worldviews."** Interactive flip cards present the same universal human experience (e.g. sleeplessness) through six ethnic medical traditions — Tibetan, Mongolian, Uyghur, Dai, Miao, and Zhuang — alongside an AI cultural-education chat, **Ask Manu AI**.
 
-> 本站为文化科普产品，非医疗建议。
+> This site is a cultural-education product, never health advice.
 
-线上地址：<https://manu6lenses.win>
+Live site: <https://manu6lenses.win>
 
-## 功能
+## Features
 
-- **Six Lenses 翻转卡片**：选择主题（如失眠），逐张翻转六种民族医学的视角
-- **ManuBTI 小测验**：探索与哪种民族世界观共鸣
-- **Ask Manu AI**：AI 文化教育对话，从文化视角回答，不做医疗建议
+- **Six Lenses flip cards**: pick a topic (e.g. sleeplessness) and flip through six ethnic-medicine perspectives one by one
+- **ManuBTI quiz**: explore which ethnic worldview resonates with you
+- **Ask Manu AI**: AI cultural-education dialogue that answers from a cultural perspective — never medical advice
 
-## 技术栈
+## Tech Stack
 
-| 环境 | 技术 |
+| Environment | Technology |
 | --- | --- |
-| 线上 | Cloudflare Worker（`worker/`），绑定自定义域名 |
-| AI 模型 | Google Gemini `gemini-3.6-flash`（免费层，约 1,500 次/天） |
-| 本地 | Node.js + Express（`backend/`） |
+| Production | Cloudflare Worker (`worker/`) on a custom domain |
+| AI model | Google Gemini `gemini-3.6-flash` (free tier, ~1,500 requests/day) |
+| Local | Node.js + Express (`backend/`) |
 
-## 目录结构
+## Project Structure
 
 ```
 .
-├── start.bat              # 本地启动入口（自动打开浏览器）
-├── backend/               # 本地后端（Express + Gemini 代理）
-│   ├── server.js          # 聊天 API 与静态服务
+├── start.bat              # Local launcher (opens the browser for you)
+├── backend/               # Local backend (Express + Gemini proxy)
+│   ├── server.js          # Chat API + static file serving
 │   ├── manu_six_lenses.html
-│   └── .env               # API key（不提交 git）
-└── worker/                # Cloudflare Worker（线上部署）
-    ├── worker.js          # 静态页面 + /api/chat 代理
-    ├── wrangler.toml      # Worker 配置与自定义域名
+│   └── .env               # API key (not committed to git)
+└── worker/                # Cloudflare Worker (production)
+    ├── worker.js          # Serves the page + /api/chat proxy
+    ├── wrangler.toml      # Worker config + custom domain
     └── manu_six_lenses.html
 ```
 
-## 本地运行
+## Run Locally
 
-1. 在 `backend/.env` 中填写 Google Gemini API key：
+1. Put your Google Gemini API key in `backend/.env`:
 
    ```env
-   GEMINI_API_KEY=你的key
+   GEMINI_API_KEY=your-api-key
    GEMINI_MODEL=gemini-3.6-flash
    PORT=3000
    ```
 
-2. 双击 `start.bat`，或手动运行：
+2. Double-click `start.bat`, or run manually:
 
    ```bash
    cd backend
@@ -55,31 +55,31 @@
    node server.js
    ```
 
-3. 浏览器打开 <http://localhost:3000>
+3. Open <http://localhost:3000> in your browser.
 
-> 注意：聊天功能依赖后端服务器，请勿直接双击 HTML 文件（`/api/chat` 无法工作）。
+> Note: the chat feature requires the backend server. Do not open the HTML file directly (`/api/chat` won't work).
 
-## 部署到线上（Cloudflare Worker）
+## Deploy to Production (Cloudflare Worker)
 
 ```bash
 cd worker
 wrangler login
-wrangler secret put GEMINI_API_KEY   # 设置加密密钥
+wrangler secret put GEMINI_API_KEY   # set encrypted key
 wrangler deploy
 ```
 
-部署后自定义域名 `manu6lenses.win` 自动生效（已在 `wrangler.toml` 配置）。
+The custom domain `manu6lenses.win` applies automatically after deploy (already configured in `wrangler.toml`).
 
-## API key 隐私
+## API Key Privacy
 
-- key 仅存于服务端：线上为 Cloudflare 加密 Secret，本地为 `backend/.env`（已被 `.gitignore` 忽略）
-- 前端 HTML 不含任何 key 或 API 地址
-- Worker 限制仅允许 `https://manu6lenses.win` 域名调用，防止他人盗刷额度
+- The key lives only server-side: as an encrypted Cloudflare Secret in production, and in `backend/.env` (git-ignored) locally
+- The frontend HTML contains no key or API URL
+- The Worker only accepts requests from `https://manu6lenses.win`, preventing others from draining your quota
 
-## 免费额度说明
+## Free Tier Notes
 
-- Gemini 免费层约 **1,500 次请求/天**，太平洋时间午夜重置
-- 额度用尽时返回友好提示，次日自动恢复
+- Gemini free tier offers ~**1,500 requests/day**, resetting at midnight Pacific Time
+- When the quota runs out, a friendly message is shown; it recovers automatically the next day
 
 ## License
 
