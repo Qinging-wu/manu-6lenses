@@ -25,6 +25,14 @@
 | 🌺 | 苗医 · Hmong Medicine | 冷热二元（身体的内在气候） |
 | 🌾 | 壮医 · Cuengh Medicine | 三道两路（气血与感知的通路） |
 
+---
+
+## 面向开发者（自建实例）
+
+以下章节仅在你打算 fork 本仓库、跑一份自己的副本时才相关。如果你只是想**使用** Manu，直接访问 <https://manu6lenses.win>，下面的内容与你无关。
+
+> 线上的 `manu6lenses.win` 是作者自己的部署，你无权使用；你需要部署到自己的 Worker URL 或自己的域名。
+
 ## 项目结构
 
 ```
@@ -36,7 +44,7 @@ manu-6lenses/
 │   └── .env                    #   GEMINI_API_KEY, GEMINI_MODEL, PORT
 ├── worker/                     # 生产部署（Cloudflare Worker）
 │   ├── worker.js               #   托管 HTML + 代理 /api/chat
-│   ├── wrangler.toml           #   路由 manu6lenses.win → worker
+│   ├── wrangler.toml           #   路由 你的域名 → worker
 │   ├── manu_six_lenses.html    #   同一份前端，随 worker 打包
 │   └── package.json
 ├── start.bat                   # Windows 一键启动（启服务 + 开浏览器）
@@ -86,9 +94,9 @@ Windows 用户也可以直接双击 `start.bat` —— 它不会额外安装东�
 | GET | `/api/health` | 健康检查 → `{ status: "ok", model }` |
 | POST | `/api/chat` | 请求体 `{ messages: [{ role, content }] }` → `{ reply }` |
 
-## 部署到 Cloudflare Workers
+## 部署到你自己的 Cloudflare Worker
 
-线上站点以单个 Cloudflare Worker 形式运行，绑定自定义域 `manu6lenses.win`。
+fork 后以单个 Cloudflare Worker 形式运行。请使用你自己的 Worker 名称和（可选）自己的自定义域——不要复用 `manu6lenses.win`，那是作者的域名。
 
 ```bash
 cd worker
@@ -100,13 +108,19 @@ npx wrangler secret put GEMINI_API_KEY
 npx wrangler deploy
 ```
 
-`wrangler.toml` 已声明路由和 `manu6lenses.win` 自定义域。首次部署后，如尚未绑定，请在 Cloudflare 控制台 Workers → 你的 worker → Triggers → Custom Domains 中添加该自定义域。
+部署前请编辑 `worker/wrangler.toml`：
+
+- 把 `name = "manu-ai"` 改成你自己的 Worker 名称
+- 把 `routes` / `custom_domain` 里的 `manu6lenses.win` 改成你自己的域名（或删掉该项，直接用默认的 `*.workers.dev` URL）
+- 把 `worker.js` 中的 `ALLOWED_ORIGIN` 改成你实际托管的来源
+
+如使用自定义域，首次部署后请在 Cloudflare 控制台 Workers → 你的 worker → Triggers → Custom Domains 中绑定。
 
 ## 说明与限制
 
-- 聊天使用 Gemini **免费额度** —— 当日配额用尽时接口返回 `429`，Manu 会温柔地提示你明天再来。
+- 聊天使用 Gemini **免费额度** —— 当日配额用尽时接口返回 `429`，Manu 会温柔地提示用户明天再来。
 - 所有回答都框定为 **文化科普**，绝不构成医疗建议；系统提示词会主动把健康问题引导回文化视角。
-- Worker 仅允许 `Origin: https://manu6lenses.win` 的请求，其他来源一律返回 403。
+- Worker 仅允许 `ALLOWED_ORIGIN` 指定的来源，其他来源一律返回 403。请把该常量改成你自己的域名。
 
 ## License
 

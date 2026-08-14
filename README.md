@@ -25,6 +25,14 @@ An interactive cultural-education website with the theme **"One Experience, Six 
 | 🌺 | Miao Medicine · 苗医 · Hmong Medicine | Cold–hot duality of the body's internal climate |
 | 🌾 | Zhuang Medicine · 壮医 · Cuengh Medicine | Three passages & two roads of qi, blood, and sensation |
 
+---
+
+## For Developers (Forking Your Own Instance)
+
+The sections below are only relevant if you want to fork this repo and run your own copy. If you just want to **use** Manu, visit <https://manu6lenses.win> — nothing below applies to you.
+
+> The live `manu6lenses.win` is the author's own deployment. You don't have access to it; you'll deploy to your own Worker URL or your own domain.
+
 ## Project Structure
 
 ```
@@ -36,7 +44,7 @@ manu-6lenses/
 │   └── .env                    #   GEMINI_API_KEY, GEMINI_MODEL, PORT
 ├── worker/                     # Production deployment (Cloudflare Worker)
 │   ├── worker.js               #   Serves HTML + proxies /api/chat
-│   ├── wrangler.toml           #   Routes manu6lenses.win → worker
+│   ├── wrangler.toml           #   Routes your domain → worker
 │   ├── manu_six_lenses.html    #   Same frontend, bundled into the worker
 │   └── package.json
 ├── start.bat                   # Windows one-click launcher (starts backend + opens browser)
@@ -86,9 +94,9 @@ On Windows you can also just double-click `start.bat` — it installs nothing ex
 | GET    | `/api/health`   | Health check → `{ status: "ok", model }` |
 | POST   | `/api/chat`     | Body `{ messages: [{ role, content }] }` → `{ reply }` |
 
-## Deploy to Cloudflare Workers
+## Deploy to Your Own Cloudflare Worker
 
-The live site runs as a single Cloudflare Worker bound to the custom domain `manu6lenses.win`.
+A fork runs as a single Cloudflare Worker. Pick your own Worker name and (optionally) your own custom domain — do not reuse `manu6lenses.win`, that's the author's domain.
 
 ```bash
 cd worker
@@ -100,13 +108,19 @@ npx wrangler secret put GEMINI_API_KEY
 npx wrangler deploy
 ```
 
-`wrangler.toml` already declares the route and the `manu6lenses.win` custom domain. After the first deploy, add the custom domain in the Cloudflare dashboard (Workers → your worker → Triggers → Custom Domains) if it isn't attached yet.
+Before deploying, edit `worker/wrangler.toml`:
+
+- change `name = "manu-ai"` to your own Worker name
+- change the `routes` / `custom_domain` entry from `manu6lenses.win` to your own domain (or remove it to use the default `*.workers.dev` URL)
+- update `ALLOWED_ORIGIN` in `worker.js` to match the origin you'll serve from
+
+After the first deploy, attach your custom domain in the Cloudflare dashboard (Workers → your worker → Triggers → Custom Domains) if you're using one.
 
 ## Notes & Limits
 
-- Chat uses Gemini's **free tier** — when the daily quota is exhausted the API returns `429`, and Manu will gently tell you to come back tomorrow.
+- Chat uses Gemini's **free tier** — when the daily quota is exhausted the API returns `429`, and Manu will gently tell the user to come back tomorrow.
 - All answers are framed as **cultural education**, never medical advice; the system prompt explicitly redirects health questions.
-- The Worker rejects any `Origin` other than `https://manu6lenses.win`.
+- The Worker rejects any `Origin` other than the one in `ALLOWED_ORIGIN`. Update that constant to your own domain.
 
 ## License
 
